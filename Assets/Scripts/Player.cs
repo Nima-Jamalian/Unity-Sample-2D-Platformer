@@ -10,8 +10,6 @@ public class Player : MonoBehaviour
     [SerializeField] private float speed = 5f;
     private float horizontalInput;
 
-
-
     [Header("Ground Detection")]
     [SerializeField] private Transform groundCheck;
     [SerializeField] private float groundCheckRadius = 0.2f;
@@ -40,29 +38,7 @@ public class Player : MonoBehaviour
     void Update()
     {
         HandleInput();
-
-        // Idle and Run Animation
-        animator.SetFloat("X",horizontalInput);
-
-        // Flip Sprite (Left and Right Movement)
-        if(horizontalInput < 0)
-        {
-            spriteRenderer.flipX = true;
-        } else if(horizontalInput > 0)
-        {
-            spriteRenderer.flipX = false;
-        }
-
-        //Jump and Double Jump Animation
-        if (jumpCount == 1)
-        {
-            animator.Play("Player Jump Animation");
-        } else if (jumpCount == 2)
-        {
-            animator.Play("Player Double Jump Animation");
-        }
-
-        animator.SetBool("isGrounded", isGrounded);
+        Animate();
     }
 
     void FixedUpdate()
@@ -105,7 +81,31 @@ public class Player : MonoBehaviour
 
     private void Animate()
     {
-        
+
+        // Idle and Run Animation
+        animator.SetFloat("X", horizontalInput);
+
+        // Flip Sprite (Left and Right Movement)
+        if (horizontalInput < 0)
+        {
+            spriteRenderer.flipX = true;
+        }
+        else if (horizontalInput > 0)
+        {
+            spriteRenderer.flipX = false;
+        }
+
+        //Jump and Double Jump Animation
+        if (jumpCount == 1)
+        {
+            animator.Play("Player Jump Animation");
+        }
+        else if (jumpCount == 2)
+        {
+            animator.Play("Player Double Jump Animation");
+        }
+
+        animator.SetBool("isGrounded", isGrounded);
     }
 
     private void HandleInput()
