@@ -66,5 +66,5 @@
     "explorer.fileNesting.patterns": {
         "*.sln": "*.csproj"
     },
-    "dotnet.defaultSolution": "Unity-Sample-2D-Platformer.slnx"
+    "dotnet.defaultSolution": "Unity-Sample-2D-Platformer.sln"
 }

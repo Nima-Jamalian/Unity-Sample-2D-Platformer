@@ -4,7 +4,7 @@
 PlayerSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 28
-  productGUID: 273535142e47e4dcd852c70d98dbeb08
+  productGUID: c84326cddd6fd40e1a3306cd8d309925
   AndroidProfiler: 0
   AndroidFilterTouchesWhenObscured: 0
   AndroidEnableSustainedPerformanceMode: 0
@@ -13,7 +13,7 @@ PlayerSettings:
   useOnDemandResources: 0
   accelerometerFrequency: 60
   companyName: DefaultCompany
-  productName: Unity-Sample-2D-Platformer
+  productName: Platformer Test
   defaultCursor: {fileID: 0}
   cursorHotspot: {x: 0, y: 0}
   m_SplashScreenBackgroundColor: {r: 0.13725491, g: 0.12156863, b: 0.1254902, a: 1}
@@ -608,7 +608,7 @@ PlayerSettings:
   ps4GarlicHeapSize: 2048
   ps4ProGarlicHeapSize: 2560
   playerPrefsMaxSize: 32768
-  ps4Passcode: sbZ34TtE1MVFzN1M65skZFXJI9E8aTQ3
+  ps4Passcode: 1gyrJBd4r6w8geGQKsBDXwCag0cwe9kj
   ps4pnSessions: 1
   ps4pnPresence: 1
   ps4pnFriends: 1
@@ -697,14 +697,14 @@ PlayerSettings:
   editorAssembliesCompatibilityLevel: 1
   m_RenderingPath: 1
   m_MobileRenderingPath: 1
-  metroPackageName: Unity-Sample-2D-Platformer
+  metroPackageName: Platformer Test
   metroPackageVersion: 
   metroCertificatePath: 
   metroCertificatePassword: 
   metroCertificateSubject: 
   metroCertificateIssuer: 
   metroCertificateNotAfter: 0000000000000000
-  metroApplicationDescription: Unity-Sample-2D-Platformer
+  metroApplicationDescription: Platformer Test
   wsaImages: {}
   metroTileShortName: 
   metroTileShowName: 0
@@ -775,10 +775,10 @@ PlayerSettings:
   captureStartupLogs: {}
   activeInputHandler: 2
   windowsGamepadBackendHint: 0
-  cloudProjectId: f30b5cc5-6d37-4cb3-93ab-55c3124550ad
+  cloudProjectId: aec8a89d-5009-47ec-9ad5-70e29b8cee22
   framebufferDepthMemorylessMode: 0
   qualitySettingsNames: []
-  projectName: Unity-Sample-2D-Platformer
+  projectName: Platformer Test
   organizationId: nima--3
   cloudEnabled: 0
   legacyClampBlendShapeWeights: 0

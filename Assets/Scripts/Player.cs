@@ -1,9 +1,7 @@
 using UnityEngine;
 
-[RequireComponent(typeof(Rigidbody2D))]
 public class Player : MonoBehaviour
 {
-
     private Rigidbody2D rb;
 
     [Header("Movement")]
@@ -14,7 +12,8 @@ public class Player : MonoBehaviour
     [SerializeField] private Transform groundCheck;
     [SerializeField] private float groundCheckRadius = 0.2f;
     [SerializeField] private LayerMask groundLayer;
-    private bool isGrounded;
+    private bool isGrounded = false;
+    
 
     [Header("Jump Settings")]
     [SerializeField] private float jumpForce = 15f;
@@ -22,7 +21,7 @@ public class Player : MonoBehaviour
     private int jumpCount = 0;
     private bool jumpRequested = false;
 
-    //Animation
+    // Animation
     private Animator animator;
     private SpriteRenderer spriteRenderer;
 
@@ -48,66 +47,6 @@ public class Player : MonoBehaviour
         HandleJump();
     }
 
-    private void Move()
-    {
-        // Move horizontally
-        rb.linearVelocity = new Vector2(horizontalInput * speed, rb.linearVelocity.y);
-    }
-
-    private void CheckGround()
-    {
-        // Check if grounded
-        isGrounded = Physics2D.OverlapCircle(groundCheck.position, groundCheckRadius, groundLayer);
-
-        // Reset jump count when on ground
-        if (isGrounded)
-        {
-            jumpCount = 0;
-        }
-    }
-
-    private void HandleJump()
-    {
-        if (jumpRequested)
-        {
-            if (jumpCount < maxJumps)
-            {
-                rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpForce);
-                jumpCount++;
-            }
-            jumpRequested = false;
-        }
-    }
-
-    private void Animate()
-    {
-
-        // Idle and Run Animation
-        animator.SetFloat("X", horizontalInput);
-
-        // Flip Sprite (Left and Right Movement)
-        if (horizontalInput < 0)
-        {
-            spriteRenderer.flipX = true;
-        }
-        else if (horizontalInput > 0)
-        {
-            spriteRenderer.flipX = false;
-        }
-
-        //Jump and Double Jump Animation
-        if (jumpCount == 1)
-        {
-            animator.Play("Player Jump Animation");
-        }
-        else if (jumpCount == 2)
-        {
-            animator.Play("Player Double Jump Animation");
-        }
-
-        animator.SetBool("isGrounded", isGrounded);
-    }
-
     private void HandleInput()
     {
         horizontalInput = Input.GetAxisRaw("Horizontal");
@@ -119,9 +58,66 @@ public class Player : MonoBehaviour
         }
     }
 
+    private void Move()
+    {
+        // Move horizontally
+        rb.linearVelocity = new Vector2(horizontalInput * speed, rb.linearVelocity.y);
+    }
+
+    private void CheckGround()
+    {
+        // Check if grounded
+        isGrounded = Physics2D.OverlapCircle(groundCheck.position,groundCheckRadius,groundLayer);
+
+        // Rest jump count when on ground
+        if (isGrounded)
+        {
+            jumpCount = 0;
+        }
+    }
+
+    private void HandleJump()
+    {
+        if (jumpRequested)
+        {
+            if(jumpCount < maxJumps)
+            {
+                rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpForce);
+                jumpCount++;
+            }
+            jumpRequested = false;
+        }
+    }
+
+    private void Animate()
+    {
+        // Idle and Run Animation
+        animator.SetFloat("X", horizontalInput);
+
+        //Flip sprite (Left and Right movement)
+        if(horizontalInput < 0)
+        {
+            spriteRenderer.flipX = true;
+        } else if(horizontalInput > 0)
+        {
+            spriteRenderer.flipX = false;
+        }
+
+        //Jump and Double Jump Animation
+        if(jumpCount == 1)
+        {
+            animator.Play("Jump Animation");
+        } else if(jumpCount == 2)
+        {
+            animator.Play("Double Jump Animation");
+        }
+
+        animator.SetBool("isGrounded", isGrounded);
+    }
+
     void OnDrawGizmos()
     {
         Gizmos.color = Color.red;
-        Gizmos.DrawWireSphere(groundCheck.position, groundCheckRadius);
+        Gizmos.DrawWireSphere(groundCheck.position,groundCheckRadius);
     }
 }
