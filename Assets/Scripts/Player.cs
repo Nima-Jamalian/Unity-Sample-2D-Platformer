@@ -104,15 +104,7 @@ public class Player : MonoBehaviour
         }
 
         //Jump and Double Jump Animation
-        if(jumpCount == 1)
-        {
-            animator.Play("Jump Animation");
-        } else if(jumpCount == 2)
-        {
-            animator.Play("Double Jump Animation");
-        }
-
-        animator.SetBool("isGrounded", isGrounded);
+        animator.SetInteger("jumpCount",jumpCount);
     }
 
     void OnDrawGizmos()
