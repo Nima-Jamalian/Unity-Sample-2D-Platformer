@@ -94,7 +94,7 @@ public class Player : MonoBehaviour
         // Idle and Run Animation
         animator.SetFloat("X", horizontalInput);
 
-        //Flip sprite (Left and Right movement)
+        // Flip sprite (Left and Right movement)
         if(horizontalInput < 0)
         {
             spriteRenderer.flipX = true;
@@ -103,7 +103,7 @@ public class Player : MonoBehaviour
             spriteRenderer.flipX = false;
         }
 
-        //Jump and Double Jump Animation
+        // Jump and Double Jump Animation
         animator.SetInteger("jumpCount",jumpCount);
     }
 
